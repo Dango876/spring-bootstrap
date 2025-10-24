@@ -1,6 +1,5 @@
 package ru.kata.spring.boot_security.demo.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -14,26 +13,17 @@ import java.util.Set;
 @Component
 public class SuccessUserHandler implements AuthenticationSuccessHandler {
 
-    @Value("${app.url.userInfo}")
-    private String userUrl;
-
-    @Value("${app.url.admin}")
-    private String adminUrl;
-
-    @Value("${app.url.default}")
-    private String defaultUrl;
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
-            response.sendRedirect(adminUrl);
+            response.sendRedirect("/admin");
         } else if (roles.contains("ROLE_USER")) {
-            response.sendRedirect(userUrl);
+            response.sendRedirect("/user");
         } else {
-            response.sendRedirect(defaultUrl);
+            response.sendRedirect("/");
         }
     }
 }
