@@ -14,11 +14,11 @@ INSERT INTO roles (name) VALUES("ROLE_ADMIN");
 
 INSERT INTO users (password, first_name, last_name, age, email)
 VALUES ('$2a$12$QCX2clmgGzS2RuVXSSR9Uew7DMjuG9nR.0I3WRY9KSZa4xG5XyLV2', 'User',
-        'Userov', 25, 'user@gmail.com');
+        'User', 25, 'user@gmail.com');
 
 INSERT INTO users (password, first_name, last_name, age, email)
 VALUES ('$2a$12$Y1rKvLcfs6GvdQB0.6PJh.T/elEM7aIv8S1nlgIgHr9cNZGkcMH3O', 'Admin',
-        'Adminov', 35, 'admin@gmail.com');
+        'Admin', 35, 'admin@gmail.com');
 
 INSERT INTO user_roles (user_id, role_id) VALUES(1,1);
 

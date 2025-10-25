@@ -1,5 +1,8 @@
 package ru.kata.spring.boot_security.demo.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +19,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/info")
-    public String getUserInfo(Model model, Principal principal) {
-        User user = userService.getUserByEmail(principal.getName());
-        model.addAttribute("user", user);
-        return "user/userInfo";
+    @GetMapping
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public String showUserProfile(@AuthenticationPrincipal UserDetails userDetails,
+                                  Model model) {
+        User currentUser = userService.getUserByEmail(userDetails.getUsername());
+        model.addAttribute("user", currentUser);
+        return "user";
     }
 }

@@ -27,9 +27,9 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
+                        .antMatchers("/", "/css/**", "/js/**", "/webjars/**").permitAll()
                         .antMatchers("/admin/**").hasRole("ADMIN")
-                        .antMatchers("/users/**").hasAnyRole("USER", "ADMIN")
-                        .antMatchers("/").permitAll()
+                        .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -47,7 +47,6 @@ public class SecurityConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 );
-
         return http.build();
     }
 
