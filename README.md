@@ -13,4 +13,4 @@ redirectAttributes  -  я бы избавился если получится о
 @PreAuthorize("hasAnyRole('USER', 'ADMIN')") - зачем? У тебя же уже есть секьюрность в методе configure. -.
 
 (@AuthenticationPrincipal UserDetails userDetails,
-Model model) { - тут явно поместится в одну строку
+Model model) { - тут явно поместится в одну строку -.
