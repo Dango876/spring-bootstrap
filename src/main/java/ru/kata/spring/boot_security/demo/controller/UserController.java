@@ -20,9 +20,7 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public String showUserProfile(@AuthenticationPrincipal UserDetails userDetails,
-                                  Model model) {
+    public String showUserProfile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         User currentUser = userService.getUserByEmail(userDetails.getUsername());
         model.addAttribute("user", currentUser);
         return "user";

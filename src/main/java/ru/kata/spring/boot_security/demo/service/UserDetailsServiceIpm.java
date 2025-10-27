@@ -9,10 +9,10 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
 
 @Service
-public class UserDetailsServiceIpl implements UserDetailsService {
+public class UserDetailsServiceIpm implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public UserDetailsServiceIpl(UserRepository userRepository) {
+    public UserDetailsServiceIpm(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

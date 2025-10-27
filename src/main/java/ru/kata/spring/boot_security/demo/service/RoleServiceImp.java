@@ -8,10 +8,10 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImp implements RoleService {
     private final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository) {
+    public RoleServiceImp(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 
