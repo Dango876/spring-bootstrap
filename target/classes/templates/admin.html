@@ -55,7 +55,6 @@
             <div th:if="${activeView == 'admin'}">
                 <h2 class="mb-4">Admin Panel</h2>
 
-                <!-- Кнопки переключения с использованием Bootstrap nav -->
                 <ul class="nav nav-tabs mb-3">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#usersTableSection">
@@ -69,11 +68,8 @@
                     </li>
                 </ul>
 
-                <!-- Контент вкладок -->
                 <div class="tab-content">
-                    <!-- Таблица пользователей -->
                     <div class="tab-pane fade show active" id="usersTableSection">
-                        <!-- Надпись All users на светло-сером фоне -->
                         <div class="bg-light p-2 mb-3 rounded">
                             <h5 class="mb-0">All users</h5>
                         </div>
@@ -205,7 +201,6 @@
     </div>
 </div>
 
-<!-- Модальные окна редактирования -->
 <div th:each="user : ${users}" class="modal fade" th:id="'editUserModal' + ${user.id}" tabindex="-1">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
