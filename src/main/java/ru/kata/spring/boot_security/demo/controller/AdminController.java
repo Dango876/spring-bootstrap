@@ -26,8 +26,9 @@ public class AdminController {
     public String showAdminPage(@RequestParam(value = "view", defaultValue = "admin") String view,
                                 @RequestParam(required = false) Boolean showForm,
                                 Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        User currenUser = userService.getUserByEmail(userDetails.getUsername());
         model.addAttribute("users", userService.findAllUsers());
-        model.addAttribute("currentUser", userService.getUserByEmail(userDetails.getUsername()));
+        model.addAttribute("currentUser", currenUser);
         model.addAttribute("activeView", view);
         model.addAttribute("allRoles", roleService.getAllRoles());
         model.addAttribute("newUser", new User());
